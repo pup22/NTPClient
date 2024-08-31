@@ -7,6 +7,7 @@
 #define SEVENZYYEARS 2208988800UL
 #define NTP_PACKET_SIZE 48
 #define NTP_DEFAULT_LOCAL_PORT 1337
+#define LEAP_YEAR(Y)     ( (Y>0) && !(Y%4) && ( (Y%100) || !(Y%400) ) )
 
 class NTPClient {
   private:
@@ -100,7 +101,19 @@ class NTPClient {
     /**
      * @return time formatted like `hh:mm:ss`
      */
-    String getFormattedTime() const;
+    String getFormattedTime(unsigned long secs = 0) const;
+
+    /**
+    * @return date formatted like `dd.mm.yyyy`
+    */
+    String getFormattedDate(unsigned long secs = 0) const;
+
+    /**
+    * преобразует секунды в дни часы минуты секунды
+    * @param secs если 0, то от времени запуска устройства
+    * @return duration formatted like `ddd hh mm ss`
+    */
+    String getDurationOfWork(unsigned long secs = 0) const; // время работы с момента запуска (формат ddd hh mm ss)
 
     /**
      * @return time in seconds since Jan. 1, 1970

@@ -1,0 +1,6 @@
+.pio/
+.vscode/
+.github/
+
+examples/secret.h
+
