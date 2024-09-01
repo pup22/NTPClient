@@ -35,11 +35,12 @@ void loop()
 {
   timeClient.update();
   unsigned long epoch = timeClient.getEpochTime() - millis() / 1000;
+  Serial.println();
   Serial.print(timeClient.getFormattedDate(epoch));
   Serial.print("\t");
   Serial.print(timeClient.getFormattedTime(epoch));
   Serial.print("\t");
-  Serial.println(timeClient.getDurationOfWork(1725153560));
+  Serial.println(timeClient.getDurationOfWork(1725153560 - 600 - 15));
 
   delay(1000);
 }

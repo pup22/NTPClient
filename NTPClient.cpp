@@ -231,6 +231,8 @@ String NTPClient::getDurationOfWork(unsigned long secs) const
   }
   if (duration_sec > 3599)
   { // hours
+    if (duration_sec < 36000 && !duration_str.isEmpty())
+      duration_str += "0";
     duration_str += duration_sec / 3600;
     duration_str += "h ";
     duration_sec %= 3600;
